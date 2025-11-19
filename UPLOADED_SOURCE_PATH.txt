@@ -1,0 +1,2 @@
+This project was generated referencing the uploaded file at: /mnt/data/c4a37cdbc2a5576d019730ee7287b119.zip
+If you want to reuse files from the uploaded archive, extract it and copy into this project before deploying.
