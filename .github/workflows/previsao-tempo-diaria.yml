@@ -26,7 +26,7 @@ jobs:
               "input": {
                 "city": "Cascavel",
                 "country_code": "BR",
-                "telegram_chat_id": "8308654284",
+                "telegram_chat_id": "5010075087",
                 "email_recipient": "nixonalves317@gmail.com"
               }
             }'
