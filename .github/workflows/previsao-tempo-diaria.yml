@@ -1,0 +1,33 @@
+name: Previsão do Tempo Diária
+
+on:
+  schedule:
+    # Executa todos os dias às 7:45 AM (Brasília Time = UTC-3)
+    # Cron está em UTC, então 7:45 AM BQT = 10:45 AM UTC
+    - cron: '45 10 * * *'
+  workflow_dispatch: # Permite execução manual
+
+jobs:
+  enviar-previsao-tempo:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+        
+      - name: Executar Receita de Previsão do Tempo
+        run: |
+          echo "🌦 Iniciando execução da receita..."
+          curl -X POST "https://backend.composio.dev/api/v1/cli/execute-recipe" \
+            -H "Content-Type: application/json" \
+            -H "x-api-key: ${{ secrets.RUBE_API_KEY }}" \
+            -d '{
+              "recipeId": "rcp_3vhFP9h9n6pq",
+              "input": {
+                "city": "Cascavel",
+                "country_code": "BR",
+                "telegram_chat_id": "8308654284",
+                "email_recipient": "nixonalves317@gmail.com"
+              }
+            }'
+          echo "✅ Previsão do tempo enviada com sucesso!"
